@@ -18,6 +18,12 @@
             "email": "typo3-coding@oliverklee.de",
             "homepage": "https://www.oliverklee.de/",
             "role": "developer"
+        },
+	      {
+            "name": "Bennet Gallein",
+            "email": "bg@esyoil.com",
+            "homepage": "https://www.esyoil.com",
+            "role": "developer"
         }
     ],
     "support": {
