@@ -1,13 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcusJaschen\Collmex\Type;
 
 /**
- * Collmex Project Staff Type
+ * Collmex Project Staff Type.
  *
  * @author  Marcus Jaschen <mjaschen@gmail.com>
- * @license http://www.opensource.org/licenses/mit-license MIT License
- * @link    https://www.marcusjaschen.de/
  *
  * @property string $type_identifier
  * @property int $project_id
@@ -19,7 +19,7 @@ class ProjectStaffGet extends AbstractType implements TypeInterface
      */
     protected $template = [
         'type_identifier' => 'PROJECT_STAFF_GET',
-        'project_id'      => null,
+        'project_id' => null,
     ];
 
     /**

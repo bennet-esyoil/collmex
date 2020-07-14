@@ -1,18 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcusJaschen\Collmex\Type\Validator;
 
 /**
- * Date Validator
+ * Date Validator.
  *
  * @author   Marcus Jaschen <mail@marcusjaschen.de>
- * @license  http://www.opensource.org/licenses/mit-license MIT License
- * @link     https://github.com/mjaschen/collmex
  */
 class DateOrEmpty extends Date implements ValidatorInterface
 {
     /**
-     * Validates a date value
+     * Validates a date value.
      *
      * Collmex date representation: `YYYYMMDD`
      *

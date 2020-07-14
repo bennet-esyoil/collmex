@@ -1,14 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcusJaschen\Collmex\Type;
 
 /**
- * Collmex TrackingNumber Type
+ * Collmex TrackingNumber Type.
  *
  * @author   Marcus Jaschen <mail@marcusjaschen.de>
  * @author   René Galle <renegalle.webdevelopment@gmail.com>
- * @license  http://www.opensource.org/licenses/mit-license MIT License
- * @link     https://github.com/mjaschen/collmex
  *
  * @property $type_identifier
  * @property $delivery_id
@@ -21,8 +21,8 @@ class TrackingNumber extends AbstractType implements TypeInterface
      */
     protected $template = [
         'type_identifier' => 'TRACKING_NUMBER',
-        'delivery_id'     => null,
-        'tracking_code'   => null,
+        'delivery_id' => null,
+        'tracking_code' => null,
     ];
 
     /**

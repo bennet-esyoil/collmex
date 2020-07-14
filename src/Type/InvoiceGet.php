@@ -1,13 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcusJaschen\Collmex\Type;
 
 /**
- * Collmex Invoice Get Type
+ * Collmex Invoice Get Type.
  *
  * @author   Marcus Jaschen <mail@marcusjaschen.de>
- * @license  http://www.opensource.org/licenses/mit-license MIT License
- * @link     https://github.com/mjaschen/collmex
  *
  * @property mixed $type_identifier
  * @property mixed $invoice_id
@@ -25,29 +25,41 @@ namespace MarcusJaschen\Collmex\Type;
  */
 class InvoiceGet extends AbstractType implements TypeInterface
 {
-    const FORMAT_CSV = 0;
-    const FORMAT_ZIP = 1;
+    /**
+     * @var int
+     */
+    public const FORMAT_CSV = 0;
+    /**
+     * @var int
+     */
+    public const FORMAT_ZIP = 1;
 
-    const STATIONARY_INCLUDE = 0;
-    const STATIONARY_EXCLUDE = 1;
+    /**
+     * @var int
+     */
+    public const STATIONARY_INCLUDE = 0;
+    /**
+     * @var int
+     */
+    public const STATIONARY_EXCLUDE = 1;
 
     /**
      * @var array
      */
     protected $template = [
-        'type_identifier'        => 'INVOICE_GET',
-        'invoice_id'             => null,
-        'client_id'              => null,
-        'customer_id'            => null,
-        'invoice_date_from'      => null,
-        'invoice_date_to'        => null,
-        'sent_only'              => null,
-        'format'                 => null,
-        'changed_only'           => null,
-        'system_name'            => null,
+        'type_identifier' => 'INVOICE_GET',
+        'invoice_id' => null,
+        'client_id' => null,
+        'customer_id' => null,
+        'invoice_date_from' => null,
+        'invoice_date_to' => null,
+        'sent_only' => null,
+        'format' => null,
+        'changed_only' => null,
+        'system_name' => null,
         'created_by_system_only' => null,
-        'stationary_exclude'     => null,
-        'output_required'        => null,
+        'stationary_exclude' => null,
+        'output_required' => null,
     ];
 
     /**

@@ -1,18 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcusJaschen\Collmex\Type;
 
 use JsonSerializable;
-use MarcusJaschen\Collmex\Csv\GeneratorInterface;
 use MarcusJaschen\Collmex\Csv\SimpleGenerator;
 use MarcusJaschen\Collmex\Type\Exception\InvalidFieldNameException;
 
 /**
- * Abstract Collmex Type Class
+ * Abstract Collmex Type Class.
  *
  * @author   Marcus Jaschen <mail@marcusjaschen.de>
- * @license  http://www.opensource.org/licenses/mit-license MIT License
- * @link     https://github.com/mjaschen/collmex
  */
 abstract class AbstractType implements JsonSerializable
 {
@@ -24,7 +23,7 @@ abstract class AbstractType implements JsonSerializable
     protected $template;
 
     /**
-     * The type data fields (ordered)
+     * The type data fields (ordered).
      *
      * @var array
      */
@@ -36,35 +35,20 @@ abstract class AbstractType implements JsonSerializable
     protected $validationErrors;
 
     /**
-     * @var GeneratorInterface
+     * @var SimpleGenerator
      */
     protected $csvGenerator;
 
     /**
      * @param array $data type data
-     * @param \MarcusJaschen\Collmex\Csv\GeneratorInterface $generator This
-     * argument is optional, the SimpleGenerator is used if argument is
-     * omitted
      *
-     * @throws \MarcusJaschen\Collmex\Type\Exception\InvalidFieldNameException
+     * @throws InvalidFieldNameException
      */
-    public function __construct(array $data, GeneratorInterface $generator = null)
+    public function __construct(array $data)
     {
+        $this->csvGenerator = new SimpleGenerator();
+
         $this->populateData($data);
-
-        if (null === $generator) {
-            $this->csvGenerator = new SimpleGenerator();
-        }
-    }
-
-    /**
-     * @param GeneratorInterface $generator
-     *
-     * @return void
-     */
-    public function setCsvGenerator(GeneratorInterface $generator)
-    {
-        $this->csvGenerator = $generator;
     }
 
     /**
@@ -78,7 +62,7 @@ abstract class AbstractType implements JsonSerializable
     }
 
     /**
-     * Returns the complete data array
+     * Returns the complete data array.
      *
      * @return array
      */
@@ -98,17 +82,17 @@ abstract class AbstractType implements JsonSerializable
     /**
      * @return string
      */
-    public function getJSON(): string
+    public function getJson(): string
     {
-        return $this->toJSON();
+        return $this->toJson();
     }
 
     /**
-     * Returns the complete data as JSON
+     * Returns the complete data as JSON.
      *
      * @return string
      */
-    public function toJSON(): string
+    public function toJson(): string
     {
         return json_encode($this->data);
     }
@@ -122,13 +106,13 @@ abstract class AbstractType implements JsonSerializable
     }
 
     /**
-     * Read record field
+     * Read record field.
      *
      * @param string $name The field name
      *
-     * @throws InvalidFieldNameException
-     *
      * @return mixed
+     *
+     * @throws InvalidFieldNameException
      */
     public function __get(string $name)
     {
@@ -137,7 +121,7 @@ abstract class AbstractType implements JsonSerializable
         }
 
         throw new InvalidFieldNameException(
-            "Cannot read field value; field '{$name}' does not exist in class " . get_class($this)
+            'Cannot read field value; field "' . $name . '" does not exist in class ' . get_class($this)
         );
     }
 
@@ -145,11 +129,13 @@ abstract class AbstractType implements JsonSerializable
      * @param string $name The field name
      * @param mixed $value The new field value
      *
+     * @return void
+     *
      * @throws InvalidFieldNameException
      */
-    public function __set(string $name, $value)
+    public function __set(string $name, $value): void
     {
-        if ($name == 'type_identifier') {
+        if ($name === 'type_identifier') {
             throw new InvalidFieldNameException('Cannot overwrite type identifier');
         }
 
@@ -160,7 +146,7 @@ abstract class AbstractType implements JsonSerializable
         }
 
         throw new InvalidFieldNameException(
-            "Cannot set field value; field '{$name}' does not exist in class " . get_class($this)
+            'Cannot set field value; field "' . $name . '" does not exist in class ' . get_class($this)
         );
     }
 
@@ -169,22 +155,22 @@ abstract class AbstractType implements JsonSerializable
      *
      * @return bool
      */
-    public function __isset(string $name)
+    public function __isset(string $name): bool
     {
         return isset($this->data[$name]);
     }
 
     /**
-     * Populates the $data attribute with the given array
+     * Populates the $data attribute with the given array.
      *
      * @param array $data if the array is indexed by numeric keys (first key
      * is checked), we'll merge the data by index order.
      *
      * @return void
      *
-     * @throws \MarcusJaschen\Collmex\Type\Exception\InvalidFieldNameException
+     * @throws InvalidFieldNameException
      */
-    protected function populateData(array $data)
+    protected function populateData(array $data): void
     {
         if (!isset($data[0])) {
             $this->assertValidFieldNames($data);
@@ -213,7 +199,7 @@ abstract class AbstractType implements JsonSerializable
      *
      * @throws InvalidFieldNameException
      */
-    private function assertValidFieldNames(array $data)
+    private function assertValidFieldNames(array $data): void
     {
         $fieldNamesDiff = array_diff_key($data, $this->template);
 

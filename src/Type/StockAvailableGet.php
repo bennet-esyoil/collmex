@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcusJaschen\Collmex\Type;
 
 /**
- * Collmex StockAvailableGet Type
+ * Collmex StockAvailableGet Type.
  *
  * IMPORTANT NOTE:
  * Collmex is doing a lot of processing on this request. For example, it
@@ -17,8 +19,6 @@ namespace MarcusJaschen\Collmex\Type;
  *
  * @author   Marcus Jaschen <mail@marcusjaschen.de>
  * @author   René Galle <renegalle.webdevelopment@gmail.com>
- * @license  http://www.opensource.org/licenses/mit-license MIT License
- * @link     https://github.com/mjaschen/collmex
  *
  * @property $type_identifier
  * @property $client_id
@@ -33,10 +33,10 @@ class StockAvailableGet extends AbstractType implements TypeInterface
      */
     protected $template = [
         'type_identifier' => 'STOCK_AVAILABLE_GET',
-        'client_id'       => null,
-        'product_id'      => null,
-        'changed_only'    => null,
-        'system_name'     => null,
+        'client_id' => null,
+        'product_id' => null,
+        'changed_only' => null,
+        'system_name' => null,
     ];
 
     /**

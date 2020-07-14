@@ -1,13 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcusJaschen\Collmex\Type;
 
 /**
- * Class AccountBalanceGet
+ * Class AccountBalanceGet.
  *
  * @author  Marcus Jaschen <mjaschen@gmail.com>
- * @license http://www.opensource.org/licenses/mit-license MIT License
- * @link    https://github.com/mjaschen/collmex
  *
  * @property $type_identifier
  * @property $client_id
@@ -25,15 +25,15 @@ class AccountBalanceGet extends AbstractType implements TypeInterface
      * @var array
      */
     protected $template = [
-        'type_identifier'  => 'ACCBAL_GET',
-        'client_id'        => null,
-        'business_year'    => null,
-        'date_to'          => null,
-        'account_id'       => null,
+        'type_identifier' => 'ACCBAL_GET',
+        'client_id' => null,
+        'business_year' => null,
+        'date_to' => null,
+        'account_id' => null,
         'account_group_id' => null,
-        'customer_id'      => null,
-        'supplier_id'      => null,
-        'cost_center'      => null,
+        'customer_id' => null,
+        'supplier_id' => null,
+        'cost_center' => null,
     ];
 
     /**

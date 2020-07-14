@@ -1,14 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcusJaschen\Collmex\Type;
 
 /**
- * Collmex Customer Get Type
+ * Collmex Customer Get Type.
  *
  * @author    Sebastian Gunreben
  * @author    Marcus Jaschen <mail@marcusjaschen.de>
- * @license   http://www.opensource.org/licenses/mit-license MIT License
- * @link      https://github.com/mjaschen/collmex
  *
  * @property $type_identifier
  * @property $customer_id
@@ -26,15 +26,15 @@ class MemberGet extends AbstractType implements TypeInterface
      * @var array
      */
     protected $template = [
-        'type_identifier'  => 'MEMBER_GET',
-        'customer_id'      => null,
-        'client_id'        => null,
-        'query'            => null,
-        'zipcode'          => null,
+        'type_identifier' => 'MEMBER_GET',
+        'customer_id' => null,
+        'client_id' => null,
+        'query' => null,
+        'zipcode' => null,
         'address_group_id' => null,
-        'exited_too'       => null,
-        'only_changed'     => null,
-        'system_name'      => null,
+        'exited_too' => null,
+        'only_changed' => null,
+        'system_name' => null,
     ];
 
     /**

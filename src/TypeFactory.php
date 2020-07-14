@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcusJaschen\Collmex;
 
 use MarcusJaschen\Collmex\Exception\InvalidTypeIdentifierException;
@@ -17,6 +19,7 @@ use MarcusJaschen\Collmex\Type\NewObject;
 use MarcusJaschen\Collmex\Type\OpenItem;
 use MarcusJaschen\Collmex\Type\PriceGroup;
 use MarcusJaschen\Collmex\Type\Product;
+use MarcusJaschen\Collmex\Type\ProductionOrder;
 use MarcusJaschen\Collmex\Type\ProductPrice;
 use MarcusJaschen\Collmex\Type\ProjectStaff;
 use MarcusJaschen\Collmex\Type\PurchaseOrder;
@@ -28,11 +31,9 @@ use MarcusJaschen\Collmex\Type\Subscription;
 use MarcusJaschen\Collmex\Type\TrackingNumber;
 
 /**
- * Type Factory for Collmex Response Data
+ * Type Factory for Collmex Response Data.
  *
  * @author   Marcus Jaschen <mail@marcusjaschen.de>
- * @license  http://www.opensource.org/licenses/mit-license MIT License
- * @link     https://github.com/mjaschen/collmex
  */
 class TypeFactory
 {
@@ -41,10 +42,9 @@ class TypeFactory
      *
      * @param array $data
      *
-     * @throws \MarcusJaschen\Collmex\Type\Exception\InvalidFieldNameException
-     * @throws InvalidTypeIdentifierException
-     *
      * @return Type\AbstractType
+     *
+     * @throws InvalidTypeIdentifierException
      */
     public function getType(array $data): Type\AbstractType
     {
@@ -95,8 +95,10 @@ class TypeFactory
                 return new PriceGroup($data);
             case 'STOCK_CHANGE':
                 return new StockChange($data);
+            case 'PRODUCTION_ORDER':
+                return new ProductionOrder($data);
         }
 
-        throw new InvalidTypeIdentifierException("Invalid Type Identifier: {$data[0]}");
+        throw new InvalidTypeIdentifierException('Invalid Type Identifier: ' . $data[0]);
     }
 }

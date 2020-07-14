@@ -1,14 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcusJaschen\Collmex\Type;
 
 /**
- * Collmex ProductPriceGet Type
+ * Collmex ProductPriceGet Type.
  *
  * @author   Marcus Jaschen <mail@marcusjaschen.de>
  * @author   René Galle <renegalle.webdevelopment@gmail.com>
- * @license  http://www.opensource.org/licenses/mit-license MIT License
- * @link     https://github.com/mjaschen/collmex
  *
  * @property $type_identifier
  * @property $client_id
@@ -22,9 +22,9 @@ class ProductPriceGet extends AbstractType implements TypeInterface
      */
     protected $template = [
         'type_identifier' => 'PRODUCT_PRICE_GET',
-        'client_id'       => null,
-        'product_id'      => null,
-        'inactive'        => null,
+        'client_id' => null,
+        'product_id' => null,
+        'inactive' => null,
     ];
 
     /**

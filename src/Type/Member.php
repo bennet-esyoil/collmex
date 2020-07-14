@@ -1,14 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcusJaschen\Collmex\Type;
 
 /**
- * Collmex Member Type
+ * Collmex Member Type.
  *
  * @author    Sebastian Gunreben
  * @author   Marcus Jaschen <mail@marcusjaschen.de>
- * @license  http://www.opensource.org/licenses/mit-license MIT License
- * @link     https://github.com/mjaschen/collmex
  *
  * @property $type_identifier
  * @property $customer_id
@@ -50,66 +50,110 @@ namespace MarcusJaschen\Collmex\Type;
  */
 class Member extends AbstractType implements TypeInterface
 {
-    const STATUS_ACTIVE                    = 0;
-    const STATUS_INACTIVE                  = 1;
-
-    const OUTPUT_MEDIUM_PRINT              = 0;
-    const OUTPUT_MEDIUM_EMAIL              = 1;
-    const OUTPUT_MEDIUM_FAX                = 2;
-    const OUTPUT_MEDIUM_MAIL               = 3;
-
-    const NO_DELIVERY_BLOCK                = 0;
-    const DELIVERY_BLOCK                   = 1;
-
-    const NO_CONSTRUCTION_SERVICE_PROVIDER = 0;
-    const CONSTRUCTION_SERVICE_PROVIDER    = 1;
-
-    const LANGUAGE_GERMAN                  = 0;
-    const LANGUAGE_ENGLISH                 = 1;
+    /**
+     * @var int
+     */
+    public const STATUS_ACTIVE = 0;
+    /**
+     * @var int
+     */
+    public const STATUS_INACTIVE = 1;
 
     /**
-     * Type data template
+     * @var int
+     */
+    public const OUTPUT_MEDIUM_PRINT = 0;
+    /**
+     * @var int
+     */
+    public const OUTPUT_MEDIUM_EMAIL = 1;
+    /**
+     * @var int
+     */
+    public const OUTPUT_MEDIUM_FAX = 2;
+    /**
+     * @var int
+     */
+    public const OUTPUT_MEDIUM_MAIL = 3;
+
+    /**
+     * @var int
+     */
+    public const NO_DELIVERY_BLOCK = 0;
+    /**
+     * @var int
+     */
+    public const DELIVERY_BLOCK = 1;
+
+    /**
+     * @var int
+     */
+    public const NO_CONSTRUCTION_SERVICE_PROVIDER = 0;
+    /**
+     * @var int
+     */
+    public const CONSTRUCTION_SERVICE_PROVIDER = 1;
+
+    /**
+     * @var int
+     */
+    public const LANGUAGE_GERMAN = 0;
+    /**
+     * @var int
+     */
+    public const LANGUAGE_ENGLISH = 1;
+
+    /**
+     * Type data template.
      *
      * @var array
      */
     protected $template = [
-        'type_identifier'             => 'CMXMGD',   // 1
-        'customer_id'                 => null,
-        'salutation'                  => null,
-        'title'                       => null,
-        'forename'                    => null,       // 5
-        'lastname'                    => null,
-        'firm'                        => null,
-        'department'                  => null,
-        'street'                      => null,
-        'zipcode'                     => null,       // 10
-        'city'                        => null,
-        'delete'                      => null,
-        'url'                         => null,
-        'country'                     => null,
-        'phone'                       => null,       // 15
-        'fax'                         => null,
-        'email'                       => null,
-        'bank_account'                => null,
-        'bank_code'                   => null,
-        'iban'                        => null,       // 20
-        'bic'                         => null,
-        'bank_name'                   => null,
-        'mandate_reference'           => null,
+        // 1
+        'type_identifier' => 'CMXMGD',
+        'customer_id' => null,
+        'salutation' => null,
+        'title' => null,
+        // 5
+        'forename' => null,
+        'lastname' => null,
+        'firm' => null,
+        'department' => null,
+        'street' => null,
+        // 10
+        'zipcode' => null,
+        'city' => null,
+        'delete' => null,
+        'url' => null,
+        'country' => null,
+        // 15
+        'phone' => null,
+        'fax' => null,
+        'email' => null,
+        'bank_account' => null,
+        'bank_code' => null,
+        // 20
+        'iban' => null,
+        'bic' => null,
+        'bank_name' => null,
+        'mandate_reference' => null,
         'mandate_reference_sign_date' => null,
-        'birthday'                    => null,       // 25
-        'entrance_date'               => null,
-        'exit_date'                   => null,
-        'annotation'                  => null,
-        'phone2'                      => null,
-        'skype'                       => null,       // 30
-        'bankaccount_owner'           => null,
-        'printout_medium'             => null,
-        'address_group'               => null,
-        'payment_agreement'           => null,
-        'payment_via'                 => null,       // 35
-        'printout_language'           => null,
-        'cost_center'                 => null,
+        // 25
+        'birthday' => null,
+        'entrance_date' => null,
+        'exit_date' => null,
+        'annotation' => null,
+        'phone2' => null,
+        // 30
+        'skype' => null,
+        'bankaccount_owner' => null,
+        'printout_medium' => null,
+        'address_group' => null,
+        'payment_agreement' => null,
+        // 35
+        'payment_via' => null,
+        'printout_language' => null,
+        'cost_center' => null,
     ];
 
     /**

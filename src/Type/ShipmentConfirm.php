@@ -1,14 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcusJaschen\Collmex\Type;
 
 /**
- * Collmex ShipmentConfirm Type
+ * Collmex ShipmentConfirm Type.
  *
  * @author   Marcus Jaschen <mail@marcusjaschen.de>
  * @author   René Galle <renegalle.webdevelopment@gmail.com>
- * @license  http://www.opensource.org/licenses/mit-license MIT License
- * @link     https://github.com/mjaschen/collmex
  *
  * @property string $type_identifier
  * @property int $delivery_id
@@ -26,15 +26,15 @@ class ShipmentConfirm extends AbstractType implements TypeInterface
      * @var array
      */
     protected $template = [
-        'type_identifier'          => 'SHIPMENT_CONFIRM',
-        'delivery_id'              => null,
-        'client_id'                => null,
-        'customer_id'              => null,
-        'mode_of_shipment'         => null,
+        'type_identifier' => 'SHIPMENT_CONFIRM',
+        'delivery_id' => null,
+        'client_id' => null,
+        'customer_id' => null,
+        'mode_of_shipment' => null,
         'sent_to_shipment_company' => null,
-        'use_tracking_code'        => null,
-        'delivery_date_from'       => null,
-        'not_confirmed'            => null,
+        'use_tracking_code' => null,
+        'delivery_date_from' => null,
+        'not_confirmed' => null,
     ];
 
     /**

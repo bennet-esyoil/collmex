@@ -1,13 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcusJaschen\Collmex\Type;
 
 /**
- * Class AccountBalance
+ * Class AccountBalance.
  *
  * @author  Marcus Jaschen <mjaschen@gmail.com>
- * @license http://www.opensource.org/licenses/mit-license MIT License
- * @link    https://github.com/mjaschen/collmex
  *
  * @property $type_identifier
  * @property $account_id
@@ -21,9 +21,9 @@ class AccountBalance extends AbstractType implements TypeInterface
      */
     protected $template = [
         'type_identifier' => 'ACC_BAL',
-        'account_id'      => null,
-        'account_name'    => null,
-        'balance'         => null,
+        'account_id' => null,
+        'account_name' => null,
+        'balance' => null,
     ];
 
     /**

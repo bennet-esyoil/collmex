@@ -1,11 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcusJaschen\Collmex\Type;
 
 /**
  * @author   Marcus Jaschen <mail@marcusjaschen.de>
- * @license  http://www.opensource.org/licenses/mit-license MIT License
- * @link     https://github.com/mjaschen/collmex
  *
  * @property string $type_identifier
  * @property string $client_id
@@ -31,23 +31,26 @@ class AccountDocumentGet extends AbstractType implements TypeInterface
      * @var array
      */
     protected $template = [
-        'type_identifier'   => 'ACCDOC_GET',
-        'client_id'         => null,
-        'business_year'     => null,
-        'entry_id'          => null,
-        'account_id'        => null, // 5
-        'cost_center'       => null,
-        'customer_id'       => null,
-        'supplier_id'       => null,
-        'equipment_id'      => null,
-        'invoice_id'        => null, // 10
-        'travel_id'         => null,
-        'text'              => null,
+        'type_identifier' => 'ACCDOC_GET',
+        'client_id' => null,
+        'business_year' => null,
+        'entry_id' => null,
+        // 5
+        'account_id' => null,
+        'cost_center' => null,
+        'customer_id' => null,
+        'supplier_id' => null,
+        'equipment_id' => null,
+        // 10
+        'invoice_id' => null,
+        'travel_id' => null,
+        'text' => null,
         'receipt_date_from' => null,
-        'receipt_date_to'   => null,
-        'include_canceled'  => null, // 15
-        'only_changed'      => null,
-        'system_name'       => null,
+        'receipt_date_to' => null,
+        // 15
+        'include_canceled' => null,
+        'only_changed' => null,
+        'system_name' => null,
     ];
 
     /**

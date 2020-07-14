@@ -1,13 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcusJaschen\Collmex\Type;
 
+use MarcusJaschen\Collmex\Type\Validator\DateOrEmpty as DateOrEmptyValidator;
+use MarcusJaschen\Collmex\Type\Validator\TimeInterval as TimeIntervalValidator;
+
 /**
- * Collmex Subscription Type
+ * Collmex Subscription Type.
  *
  * @author   Marcus Jaschen <mail@marcusjaschen.de>
- * @license  http://www.opensource.org/licenses/mit-license MIT License
- * @link     https://github.com/mjaschen/collmex
  *
  * @property $type_identifier
  * @property $customer_id
@@ -22,31 +25,55 @@ namespace MarcusJaschen\Collmex\Type;
  */
 class Subscription extends AbstractType implements TypeInterface
 {
-    const INTERVAL_YEAR              = 0;
-    const INTERVAL_HALF_YEAR         = 1;
-    const INTERVAL_QUARTER           = 2;
-    const INTERVAL_MONTH             = 3;
-    const INTERVAL_YEAR_PREPAID      = 4;
-    const INTERVAL_HALF_YEAR_PREPAID = 5;
-    const INTERVAL_QUARTER_PREPAID   = 6;
-    const INTERVAL_MONTH_PREPAID     = 7;
+    /**
+     * @var int
+     */
+    public const INTERVAL_YEAR = 0;
+    /**
+     * @var int
+     */
+    public const INTERVAL_HALF_YEAR = 1;
+    /**
+     * @var int
+     */
+    public const INTERVAL_QUARTER = 2;
+    /**
+     * @var int
+     */
+    public const INTERVAL_MONTH = 3;
+    /**
+     * @var int
+     */
+    public const INTERVAL_YEAR_PREPAID = 4;
+    /**
+     * @var int
+     */
+    public const INTERVAL_HALF_YEAR_PREPAID = 5;
+    /**
+     * @var int
+     */
+    public const INTERVAL_QUARTER_PREPAID = 6;
+    /**
+     * @var int
+     */
+    public const INTERVAL_MONTH_PREPAID = 7;
 
     /**
-     * Type data template
+     * Type data template.
      *
      * @var array
      */
     protected $template = [
-        'type_identifier'     => 'CMXABO',
-        'customer_id'         => null,
-        'client_id'           => null,
-        'valid_from'          => null,
-        'valid_to'            => null,
-        'product_id'          => null,
+        'type_identifier' => 'CMXABO',
+        'customer_id' => null,
+        'client_id' => null,
+        'valid_from' => null,
+        'valid_to' => null,
+        'product_id' => null,
         'product_description' => null,
-        'price'               => null,
-        'interval'            => null,
-        'next_invoice'        => null,
+        'price' => null,
+        'interval' => null,
+        'next_invoice' => null,
     ];
 
     /**
@@ -56,18 +83,18 @@ class Subscription extends AbstractType implements TypeInterface
      */
     public function validate(): bool
     {
-        $dateOrEmptyValidator = new \MarcusJaschen\Collmex\Type\Validator\DateOrEmpty();
+        $dateOrEmptyValidator = new DateOrEmptyValidator();
 
-        if (! $dateOrEmptyValidator->validate($this->data['valid_from'])) {
+        if (!$dateOrEmptyValidator->validate($this->data['valid_from'])) {
             $this->validationErrors['valid_from'] = true;
         }
-        if (! $dateOrEmptyValidator->validate($this->data['valid_to'])) {
+        if (!$dateOrEmptyValidator->validate($this->data['valid_to'])) {
             $this->validationErrors['valid_to'] = true;
         }
 
-        $intervalValidator = new \MarcusJaschen\Collmex\Type\Validator\TimeInterval();
+        $intervalValidator = new TimeIntervalValidator();
 
-        if (! $intervalValidator->validate($this->data['interval'])) {
+        if (!$intervalValidator->validate($this->data['interval'])) {
             $this->validationErrors['interval'] = true;
         }
 

@@ -1,20 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcusJaschen\Collmex;
 
 use MarcusJaschen\Collmex\Client\ClientInterface;
-use MarcusJaschen\Collmex\Csv\ParserInterface;
+use MarcusJaschen\Collmex\Client\Exception\RequestFailedException;
 use MarcusJaschen\Collmex\Csv\SimpleParser;
+use MarcusJaschen\Collmex\Exception\InvalidResponseMimeTypeException;
 use MarcusJaschen\Collmex\Response\CsvResponse;
 use MarcusJaschen\Collmex\Response\ResponseFactory;
 use MarcusJaschen\Collmex\Response\ZipResponse;
 
 /**
- * Collmex API Request
+ * Collmex API Request.
  *
- * @author   Marcus Jaschen <mail@marcusjaschen.de>
- * @license  http://www.opensource.org/licenses/mit-license MIT License
- * @link     https://github.com/mjaschen/collmex
+ * @author Marcus Jaschen <mail@marcusjaschen.de>
  */
 class Request
 {
@@ -24,35 +25,26 @@ class Request
     protected $client;
 
     /**
-     * @var ParserInterface
+     * @var SimpleParser
      */
     protected $responseParser;
 
-    /**
-     * @param ClientInterface $client
-     * @param ParserInterface $responseParser
-     */
-    public function __construct(ClientInterface $client, ParserInterface $responseParser = null)
+    public function __construct(ClientInterface $client)
     {
-        $this->client         = $client;
-
-        if ($responseParser instanceof ParserInterface) {
-            $this->responseParser = $responseParser;
-
-            return;
-        }
+        $this->client = $client;
 
         $this->responseParser = new SimpleParser();
     }
 
     /**
-     * Sends an API request and returns the response object
+     * Sends an API request and returns the response object.
      *
      * @param string $body The request body
      *
      * @return ZipResponse|CsvResponse
-     * @throws \MarcusJaschen\Collmex\Exception\InvalidResponseMimeTypeException
-     * @throws \MarcusJaschen\Collmex\Client\Exception\RequestFailedException
+     *
+     * @throws InvalidResponseMimeTypeException
+     * @throws RequestFailedException
      */
     public function send(string $body)
     {

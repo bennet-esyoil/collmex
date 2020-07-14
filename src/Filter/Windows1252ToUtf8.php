@@ -1,30 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcusJaschen\Collmex\Filter;
 
 use ForceUTF8\Encoding;
 
 /**
- * Filter to convert Windows 1252 to UTF-8 encoding
+ * Filter to convert Windows 1252 to UTF-8 encoding.
  *
  * @author   Marcus Jaschen <mail@marcusjaschen.de>
- * @license  http://www.opensource.org/licenses/mit-license MIT License
- * @link     https://github.com/mjaschen/collmex
  */
 class Windows1252ToUtf8 implements FilterInterface
 {
-    /**
-     * @param string $input string or array
-     *
-     * @return string
-     *
-     * @deprecated
-     */
-    public function filter(string $input): string
-    {
-        return Encoding::toUTF8($input);
-    }
-
     /**
      * @param string $text
      *
@@ -36,9 +24,9 @@ class Windows1252ToUtf8 implements FilterInterface
     }
 
     /**
-     * @param array $input
+     * @param string[] $input
      *
-     * @return array
+     * @return string[]
      */
     public function filterArray(array $input): array
     {

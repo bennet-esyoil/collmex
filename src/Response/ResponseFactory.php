@@ -1,9 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcusJaschen\Collmex\Response;
 
 use MarcusJaschen\Collmex\Csv\ParserInterface;
 use MarcusJaschen\Collmex\Exception\InvalidResponseMimeTypeException;
+use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
 use Symfony\Component\HttpFoundation\File\File;
 
 class ResponseFactory
@@ -14,22 +17,22 @@ class ResponseFactory
     protected $responseBody;
 
     /**
-     * @var \MarcusJaschen\Collmex\Csv\ParserInterface
+     * @var ParserInterface
      */
     protected $responseParser;
 
     /**
      * @param string $responseBody
-     * @param \MarcusJaschen\Collmex\Csv\ParserInterface $responseParser
+     * @param ParserInterface $responseParser
      */
     public function __construct(string $responseBody, ParserInterface $responseParser)
     {
-        $this->responseBody   = $responseBody;
+        $this->responseBody = $responseBody;
         $this->responseParser = $responseParser;
     }
 
     /**
-     * Returns the class name which handles the response ('CsvResponse' or 'ZipResponse')
+     * Returns the class name which handles the response ('CsvResponse' or 'ZipResponse').
      *
      * @return ZipResponse|CsvResponse
      *
@@ -55,14 +58,14 @@ class ResponseFactory
      *
      * @return string|null
      *
-     * @throws \Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException
+     * @throws FileNotFoundException
      */
-    protected function getResponseMimeType()
+    protected function getResponseMimeType(): ?string
     {
         $tmpFilename = tempnam(sys_get_temp_dir(), 'collmexphp_');
         file_put_contents($tmpFilename, $this->responseBody);
 
-        $file     = new File($tmpFilename);
+        $file = new File($tmpFilename);
         $mimeType = $file->getMimeType();
 
         unlink($tmpFilename);

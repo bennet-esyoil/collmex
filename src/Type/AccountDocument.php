@@ -1,11 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcusJaschen\Collmex\Type;
 
 /**
  * @author   Marcus Jaschen <mail@marcusjaschen.de>
- * @license  http://www.opensource.org/licenses/mit-license MIT License
- * @link     https://github.com/mjaschen/collmex
  *
  * @property string $type_identifier
  * @property string $client_id
@@ -44,36 +44,42 @@ class AccountDocument extends AbstractType implements TypeInterface
      * @var array
      */
     protected $template = [
-        'type_identifier'        => 'ACCDOC',
-        'client_id'              => null,
-        'business_year'          => null,
-        'entry_id'               => null,
-        'document_date'          => null, // 5
-        'booked_on'              => null,
-        'entry_description'      => null,
-        'position'               => null,
-        'account_id'             => null,
-        'account_name'           => null, // 10
-        'debit_or_credit'        => null,
-        'amount'                 => null,
-        'customer_id'            => null,
-        'customer_name'          => null,
-        'supplier_id'            => null, // 15
-        'supplier_name'          => null,
-        'equipment_id'           => null,
-        'equipment_name'         => null,
-        'canceled_entry_id'      => null,
-        'cost_centre'            => null, // 20
-        'invoice_id'             => null,
-        'order_id'               => null,
-        'travel_id'              => null,
-        'assigned_id'            => null,
-        'assigned_business_year' => null, // 25
-        'assigned_position'      => null,
-        'document_id'            => null,
-        'receipt_date'           => null,
-        'entry_date'             => null,
-        'internal_memo'          => null, // 30
+        'type_identifier' => 'ACCDOC',
+        'client_id' => null,
+        'business_year' => null,
+        'entry_id' => null,
+        // 5
+        'document_date' => null,
+        'booked_on' => null,
+        'entry_description' => null,
+        'position' => null,
+        'account_id' => null,
+        // 10
+        'account_name' => null,
+        'debit_or_credit' => null,
+        'amount' => null,
+        'customer_id' => null,
+        'customer_name' => null,
+        // 15
+        'supplier_id' => null,
+        'supplier_name' => null,
+        'equipment_id' => null,
+        'equipment_name' => null,
+        'canceled_entry_id' => null,
+        // 20
+        'cost_centre' => null,
+        'invoice_id' => null,
+        'order_id' => null,
+        'travel_id' => null,
+        'assigned_id' => null,
+        // 25
+        'assigned_business_year' => null,
+        'assigned_position' => null,
+        'document_id' => null,
+        'receipt_date' => null,
+        'entry_date' => null,
+        // 30
+        'internal_memo' => null,
     ];
 
     /**

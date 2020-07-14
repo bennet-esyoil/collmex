@@ -45,6 +45,8 @@ There is (or least should be…) a *Type* class for every Collmex record type
 - `PRICE_GROUPS_GET`
 - `PRODUCT_GET`
 - `PRODUCT_PRICE_GET`
+- `PRODUCTION_ORDER`
+- `PRODUCTION_ORDER_GET`
 - `PROJECT_STAFF`
 - `PROJECT_STAFF_GET`
 - `PURCHASE_ORDER_GET`
@@ -87,9 +89,10 @@ return [
 
 ## Compatibility
 
-The Collmex PHP SDK requires PHP >= 7.0. If you're still using an ancient PHP
+The Collmex PHP SDK requires PHP >= 7.1. If you're still using an ancient PHP
 version, you can install older versions of the Collmex PHP SDK:
 
+- for PHP 7.0 compatibility: use the 0.12.x branch (`composer require mjaschen/collmex:~0.12`)
 - for PHP 5.6 compatibility: use the 0.11.x branch (`composer require mjaschen/collmex:~0.11`)
 - for PHP 5.5 compatibility: use the 0.6.x branch (`composer require mjaschen/collmex:~0.6`)
 - for PHP 5.4 compatibility: use the 0.4.x branch (`composer require mjaschen/collmex:~0.4`)
@@ -191,31 +194,6 @@ if ($collmexResponse->isError()) {
 }
 ```
 
-### Use a different CSV parser for the response data
-
-The Collmex PHP SDK uses PHP's built-in CSV-parsing capabilities. We've had at 
-least one case when `fgetcsv()` didn't work as expected. Fortunately it's
-possible to use any CSV parser which implements 
-`MarcusJaschen\Collmex\Csv\ParserInterface` (Collmex PHP SDK ships with
-`SimpleParser` (default) and `LeagueCsvParser`). To use a different parser, just
-inject it when creating the `Request` instance:
-
-```php
-<?php
-
-use MarcusJaschen\Collmex\Client\Curl as CurlClient;
-use MarcusJaschen\Collmex\Csv\LeagueCsvParser;
-use MarcusJaschen\Collmex\Request;
-
-// initialize HTTP client
-$collmexClient = new CurlClient('USER', 'PASSWORD', 'CUSTOMER_ID');
-
-// create request object with a custom CSV parser
-$collmexRequest = new Request($collmexClient, new LeagueCsvParser());
-
-// ...
-```
-
 ## Notes
 
 Collmex expects all strings encoded in code page 1252 (Windows) while the
@@ -226,7 +204,7 @@ response from the API.
 
 ## Development
 
-### Run Tests
+### Run code checks
 
 To run checks and tests, it's the easiest to use the provided Composer scripts:
 
@@ -250,6 +228,14 @@ Psalm:
 
 ```shell
 ./vendor/bin/psalm
+```
+
+### Autoformat the code
+
+You can use a Composer script to autoformat the code:
+
+```shell
+composer fix:php-cs
 ```
 
 ## Collmex API Documentation

@@ -1,14 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcusJaschen\Collmex\Type;
 
 /**
- * Collmex Stock Type
+ * Collmex Stock Type.
  *
  * @author   Marcus Jaschen <mail@marcusjaschen.de>
  * @author   René Galle <renegalle.webdevelopment@gmail.com>
- * @license  http://www.opensource.org/licenses/mit-license MIT License
- * @link     https://github.com/mjaschen/collmex
  *
  * @property $type_identifier
  * @property $product_id
@@ -26,14 +26,14 @@ class Stock extends AbstractType implements TypeInterface
      * @var array
      */
     protected $template = [
-        'type_identifier'     => 'CMXSTK',
-        'product_id'          => null,
-        'client_id'           => null,
-        'stock'               => null,
-        'type'                => null,
-        'charge_number'       => null,
-        'value'               => null,
-        'charge_description'  => null,
+        'type_identifier' => 'CMXSTK',
+        'product_id' => null,
+        'client_id' => null,
+        'stock' => null,
+        'type' => null,
+        'charge_number' => null,
+        'value' => null,
+        'charge_description' => null,
         'product_description' => null,
     ];
 

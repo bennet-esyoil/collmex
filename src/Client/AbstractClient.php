@@ -1,26 +1,28 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcusJaschen\Collmex\Client;
 
 use MarcusJaschen\Collmex\Csv\SimpleGenerator;
 use MarcusJaschen\Collmex\Filter\Utf8ToWindows1252;
 
 /**
- * Abstract Client Class
+ * Abstract Client Class.
  *
  * @author   Marcus Jaschen <mail@marcusjaschen.de>
- * @license  http://www.opensource.org/licenses/mit-license MIT License
- * @link     https://github.com/mjaschen/collmex
  */
 abstract class AbstractClient
 {
     /**
-     * The Collmex API endpoint URL template
+     * The Collmex API endpoint URL template.
+     *
+     * @var string
      */
-    const EXCHANGE_URL = 'https://www.collmex.de/cgi-bin/cgi.exe?%s,0,data_exchange';
+    public const EXCHANGE_URL = 'https://www.collmex.de/c.cmx?%s,0,data_exchange';
 
     /**
-     * The Collmex API endpoint URL
+     * The Collmex API endpoint URL.
      *
      * @var string
      */
@@ -43,13 +45,13 @@ abstract class AbstractClient
      */
     public function __construct(string $user, string $password, string $customer)
     {
-        $this->user        = $user;
-        $this->password    = $password;
+        $this->user = $user;
+        $this->password = $password;
         $this->exchangeUrl = sprintf(static::EXCHANGE_URL, $customer);
     }
 
     /**
-     * Converts the text to Windows Codepage 1252 encoding
+     * Converts the text to Windows Codepage 1252 encoding.
      *
      * @param string $text
      *

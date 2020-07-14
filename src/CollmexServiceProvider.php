@@ -1,16 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcusJaschen\Collmex;
+
+use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
+use MarcusJaschen\Collmex\Client\Curl as CurlClient;
 
 /**
  * Laravel 5 Service Provider for Collmex PHP SDK.
  *
  * @author   Marcus Jaschen <mail@marcusjaschen.de>
- * @license  http://www.opensource.org/licenses/mit-license MIT License
- *
- * @link     https://github.com/mjaschen/collmex
  */
-class CollmexServiceProvider extends \Illuminate\Support\ServiceProvider
+class CollmexServiceProvider extends IlluminateServiceProvider
 {
     /**
      * @var bool
@@ -22,7 +24,7 @@ class CollmexServiceProvider extends \Illuminate\Support\ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->publishes(
             [
@@ -37,7 +39,7 @@ class CollmexServiceProvider extends \Illuminate\Support\ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/collmex.php', 'collmex');
 
@@ -50,16 +52,12 @@ class CollmexServiceProvider extends \Illuminate\Support\ServiceProvider
      *
      * @return void
      */
-    protected function registerClient()
+    protected function registerClient(): void
     {
         $this->app->singleton(
             'collmex.client',
-            function () {
-                return new \MarcusJaschen\Collmex\Client\Curl(
-                    config('collmex.user'),
-                    config('collmex.password'),
-                    config('collmex.customer')
-                );
+            static function () {
+                return new CurlClient(config('collmex.user'), config('collmex.password'), config('collmex.customer'));
             }
         );
     }
@@ -69,18 +67,18 @@ class CollmexServiceProvider extends \Illuminate\Support\ServiceProvider
      *
      * @return void
      */
-    protected function registerRequest()
+    protected function registerRequest(): void
     {
         $this->app->singleton(
             'collmex.request',
-            function ($app) {
+            static function ($app) {
                 return new Request($app->make('collmex.client'));
             }
         );
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     public function provides(): array
     {

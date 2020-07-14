@@ -1,15 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MarcusJaschen\Collmex\Client;
 
 use MarcusJaschen\Collmex\Client\Exception\RequestFailedException;
 
 /**
- * curl Client Class
+ * curl Client Class.
  *
  * @author   Marcus Jaschen <mail@marcusjaschen.de>
- * @license  http://www.opensource.org/licenses/mit-license MIT License
- * @link     https://github.com/mjaschen/collmex
  */
 class Curl extends AbstractClient implements ClientInterface
 {
@@ -19,7 +19,7 @@ class Curl extends AbstractClient implements ClientInterface
     protected $curl;
 
     /**
-     * Executes the actual HTTP request and creates the Response object
+     * Executes the actual HTTP request and creates the Response object.
      *
      * @param $body
      *
@@ -57,7 +57,7 @@ class Curl extends AbstractClient implements ClientInterface
      *
      * @return void
      */
-    protected function initCurl()
+    protected function initCurl(): void
     {
         $this->curl = curl_init($this->exchangeUrl);
         curl_setopt($this->curl, CURLOPT_POST, true);
@@ -71,9 +71,9 @@ class Curl extends AbstractClient implements ClientInterface
      *
      * @return void
      */
-    protected function destroyCurl()
+    protected function destroyCurl(): void
     {
-        if (! empty($this->curl)) {
+        if (!empty($this->curl)) {
             curl_close($this->curl);
         }
     }
