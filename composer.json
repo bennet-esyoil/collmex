@@ -12,7 +12,13 @@
             "email": "mail@marcusjaschen.de",
             "homepage": "https://marcusjaschen.de/",
             "role": "developer"
-        }
+        },
+	{
+		"name": "Bennet Gallein",
+		"email": "bg@esyoil.com",
+		"homepage": "https://www.esyoil.com",
+		"role": "developer"
+	}
     ],
     "support": {
         "source": "https://github.com/mjaschen/collmex",
@@ -24,8 +30,8 @@
         "ext-json": "*",
         "ext-zip": "*",
         "neitanod/forceutf8": "^1.4.0 || ^2.0.0",
-        "symfony/finder": "^2.5.0 || ^3.0.0 || ^4.0.0",
-        "symfony/http-foundation": "^2.5.0 || ^3.0.0 || ^4.0.0"
+        "symfony/finder": "^2.5.0 || ^3.0.0 || ^4.0.0 || ^5.0.0",
+        "symfony/http-foundation": "^2.5.0 || ^3.0.0 || ^4.0.0 || ^5.0.0"
     },
     "require-dev": {
         "laravel/framework": "^5.4",
